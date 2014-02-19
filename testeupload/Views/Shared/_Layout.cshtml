@@ -1,0 +1,50 @@
+﻿@using ClientDependency.Core
+@using ClientDependency.Core.Mvc
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    
+    @using ClientDependency.Core
+@using ClientDependency.Core.Mvc
+<!DOCTYPE html>
+<html>
+<head>
+	<title>@ViewBag.Title</title>
+	
+    @MvcHtmlString.Create(Html.RenderCssHere(new List<IClientDependencyPath>
+        {
+            new BasicPath("Base", "~/Content/themes/base"),
+            new BasicPath("Content", "~/Content")
+        }).ToString())
+
+    @MvcHtmlString.Create(Html.RenderJsHere(new List<IClientDependencyPath>
+        {
+            new BasicPath("Scripts", "~/Scripts"),
+            new BasicPath("googleCDN", "http://ajax.googleapis.com/ajax/libs/"),
+            new BasicPath("Content", "~/Content")
+												   
+        }).ToString())
+
+    @{
+		Html.RequiresCss("Site.css", "Content", 1);
+	}
+</head>
+<body>
+	<div class="page">
+		<div id="header">
+			<div id="title">
+				<h1>FILE UPLOADER</h1>
+			</div>
+		</div>
+		<div id="main">
+			@RenderBody()
+		</div>
+		<div id="footer">
+		</div>
+	</div>
+</body>
+</html>
+
